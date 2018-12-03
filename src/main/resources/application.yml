@@ -1,0 +1,4 @@
+micronaut:
+    application:
+        name: testapp
+    server.port: -1
