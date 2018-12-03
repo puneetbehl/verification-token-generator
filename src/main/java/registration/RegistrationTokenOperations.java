@@ -4,6 +4,7 @@ import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Post;
 import io.micronaut.validation.Validated;
+import io.reactivex.Single;
 import org.reactivestreams.Publisher;
 
 import javax.validation.Valid;
@@ -14,7 +15,7 @@ import java.util.Optional;
 public interface RegistrationTokenOperations {
 
     @Get(value = "/generate/{?registrationDetails*}")
-    HttpResponse<Optional<String>> generate(@Valid RegistrationDetails registrationDetails);
+    Single<HttpResponse<String>> generate(@Valid RegistrationDetails registrationDetails);
 
     @Post(value = "/validate")
     Publisher<HttpResponse<? extends TokenDetails>> validate(@NotEmpty String token);
